@@ -1,0 +1,29 @@
+#header_box {
+    width: 100%;
+    height: 8%;
+    background-color: darkgray
+}
+
+#login_input_box {
+    width: 30%;
+    height: 100%;
+    background-color: grey;
+    margin-left: 60%;
+}
+
+.input_login {
+    width: 25%;
+    height: 40%;
+    font: 20px "",Arial;
+    margin-left: 5%;
+    margin-top: 5%;
+    padding: 5px;
+}
+
+#login_button {
+    width: 25%;
+    height: 40%;
+    margin-left: 20px;
+    font: 20px "", Arial;
+    border: none;
+}

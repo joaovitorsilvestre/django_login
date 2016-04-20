@@ -1,0 +1,16 @@
+<form method="post" action=".?next={{ redirect_to }}"> {% csrf_token %}
+
+    <input type="text" name="username" placeholder="Username"/>
+
+    <input type="password" name="password" placeholder="Password"/>
+
+    <input type="text" name="email" placeholder="Email"/>
+
+    <input type="text" name="name" placeholder="Name"/>
+
+    {% if fail == True %}
+      <p>This username is allready beeing used...</p>
+    {% endif %}
+
+    <input type="submit" value="Registrar"/>
+</form>
