@@ -9,17 +9,18 @@
     <body>
         <div id="header_box">
             <div id="login_input_box">
-              {% if active == False %}
-                <form method="post">
-                  {% csrf_token %}
-                  <input name="username" class="input_login" type="text" placeholder="username"/>
-                  <input name="password" class="input_login" type="password" placeholder="pasword"/>
-                  <input id="login_button" type="submit" value="Login" />
-                  <label>{{name_user}} Logado</label>
-                </form>
-              {% else %}
-                <p>{{name_user}} Logado</p>
-              {% endif %}
+                {% if active == False %}
+                    <form method="post">
+                        {% csrf_token %}
+                            <input name="username" class="input_login" type="text" placeholder="username"/>
+                            <input name="password" class="input_login" type="password" placeholder="pasword"/>
+                            <input id="login_button" type="submit" value="Login" />
+                    </form>
+                {% else %}
+                    <label>{{usuario.name}}</label>
+                    <img src="../../../media_profiles/2016-04-05223856.jpg" id="profile_image" />
+                    <a href="/accounts/logout">Logout</a>
+                {% endif %}
             </div>
         </div>
     </body>

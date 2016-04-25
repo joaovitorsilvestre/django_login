@@ -121,6 +121,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'django_login/media_profiles')
 
 AUTH_USER_MODEL = 'accounts.Usuario' # referencia ao django para usar este template para criar o usuario padrão
 ROOT_URLCONF = 'login_django.urls'

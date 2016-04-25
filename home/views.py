@@ -6,13 +6,10 @@ from login_django import settings
 def Home(request):
     active = request.user.is_authenticated()
 
-    if active == True:
-        name_user = request.user.name
-    else:
-        name_user = 'lol'
+    usuario = request.user
 
     if active == True:
-        return render(request, 'home/home.html', {'active':True, 'name_user': name_user})
+        return render(request, 'home/home.html', {'active':True, 'usuario':usuario})
     else:
         next = request.GET.get('next', '/home/')
         if request.method == 'POST':
@@ -28,6 +25,6 @@ def Home(request):
                 else:
                     return HttpResponse('Inactive user')
             else:
-                return render(request, 'home/home.html', {'fail':True, 'active':False, 'name_user': name_user})
+                return render(request, 'home/home.html', {'fail':True, 'active':False, 'usuario':usuario})
 
-    return render(request, 'home/home.html', {'active':active, 'name_user': name_user})
+    return render(request, 'home/home.html', {'active':active, 'usuario': usuario})

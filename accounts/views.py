@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from login_django import settings
 from accounts.models import Usuario
+from django.utils.crypto import get_random_string
 
 def Login(request):
     next = request.GET.get('next', '/home/')
@@ -45,6 +46,8 @@ def Register(request):
                 user = authenticate(username=username, password=password)
                 login(request, user)
                 request.user.name = name
+                request.user.is_active = False #faz o usuario novo ser inativo, somente após a verificação no email se tornara True
+                request.user.activation_key = get_random_string(length=20)
                 request.user.save()
                 logout(request)
 
@@ -53,3 +56,14 @@ def Register(request):
         return render(request, 'accounts/register.html', {'fail':True})
 
     return render(request, 'accounts/register.html', {'redirect_to': next})
+
+def Activate(request, key):
+    user_key = Usuario.objects.get(activation_key=key) # aqui ele procura por alguma conta que tenha a key
+
+    for item in Usuario.objects.all():      #
+        if item.activation_key == key:
+            item.is_active = True
+            item.save()
+            break
+
+    return render(request, 'accounts/activate.html',{'user_key':user_key})
