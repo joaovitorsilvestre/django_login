@@ -15,11 +15,13 @@
                             <input name="username" class="input_login" type="text" placeholder="username"/>
                             <input name="password" class="input_login" type="password" placeholder="pasword"/>
                             <input id="login_button" type="submit" value="Login" />
+                            <a href="/accounts/register">Register</a>
                     </form>
                 {% else %}
                     <label>{{usuario.name}}</label>
                     <img src="/media_profiles/{{usuario.profile_image}}" id="profile_image" />
                     <a href="/accounts/logout">Logout</a>
+                    <a href="/accounts/edit_profile">Edit Profile</a>
                 {% endif %}
             </div>
         </div>

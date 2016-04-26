@@ -27,7 +27,7 @@ def Login(request):
 
 def Logout(request):
     logout(request)
-    return HttpResponseRedirect('/accounts/login')
+    return HttpResponseRedirect('/home')
 
 def Register(request):
     next = request.GET.get('next', '/register/compĺete/')
@@ -55,7 +55,7 @@ def Register(request):
                 request.user.save()
                 logout(request)
 
-                return HttpResponse('account created succesfully. This is the activation key: {}'.format(key))
+                return HttpResponse("account created succesfully. This is the activation key: {0}... Click <a href='/accounts/activate/{0}' >here</a> to activate".format(key))
     except:
         return render(request, 'accounts/register.html', {'fail':True})
 
@@ -87,13 +87,13 @@ def Edit_profile(request):
                 profile_image = None
 
             if gender != 'M' and gender != 'F':                              # verifica se o valor recebido do gender é valido, se nao retorna um erro
-                return HttpResponse('Sommeting is not right, return and try again...')
+                return HttpResponse("Sommeting is not right, click <a href='/accounts/edit_profile' >here</a> and try again...")
 
             usuario.gender = gender
             usuario.name = name
             if profile_image != None:
                 usuario.profile_image = profile_image
             usuario.save()
-            return HttpResponse('Profile updated with success!')
+            return HttpResponse("Profile updated with success!...Click <a href='/home' >here</a> to go to homepage")
 
-    return render(request, 'accounts/edit_profile.html')
+    return render(request, 'accounts/edit_profile.html', {'usuario':usuario})
