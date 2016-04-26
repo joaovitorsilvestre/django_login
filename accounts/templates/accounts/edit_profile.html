@@ -1,0 +1,11 @@
+<form method="post" action=".?next={{ redirect_to }}" enctype="multipart/form-data"> {% csrf_token %}
+
+    <input type="text" name="name" placeholder="Name"/>
+    <input type="radio" name="gender" value='F' checked> Female<br>
+    <input type="radio" name="gender" value='M'> Male<br>
+
+    <input type="file" name="profile_image" accept="image/*">
+
+    <input type="submit" value="Save"/>
+
+</form>
