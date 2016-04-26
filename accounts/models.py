@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 def user_path(instance, filename):
-    return ('media_profiles/{}/{}'.format(instance.username, filename))
+    return ('image_profile_users/{}/{}'.format(instance.username, filename))
 
 class Usuario(AbstractUser):
 
@@ -15,4 +15,4 @@ class Usuario(AbstractUser):
 
     name = models.CharField(max_length=50, blank=True, default='unknown')
     gender = models.CharField(max_length=10, choices= SEXO_CHOICES, default='M')
-    profile_image = models.ImageField(null=True, blank=True, upload_to=user_path)
+    profile_image = models.ImageField(null=True, blank=True, upload_to=user_path, default ='default_files/profile_image.png')
