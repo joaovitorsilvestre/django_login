@@ -1,6 +1,6 @@
 <form method="post" action=".?next={{ redirect_to }}" enctype="multipart/form-data"> {% csrf_token %}
 
-    <input type="text" name="name" placeholder={{usuario.name}} pattern=".{3,}" required title="3 characters minimum"/>
+    <input type="text" name="name" value="{{usuario.name}}" pattern=".{3,}" required title="3 characters minimum"/>
     <input type="radio" name="gender" value='F' checked> Female<br>
     <input type="radio" name="gender" value='M'> Male<br>
 

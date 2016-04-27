@@ -1,32 +1,36 @@
 #header_box {
     width: 100%;
-    height: 8%;
-    background-color: darkgray
+    height: 10%;
+    background-color: #204A52
 }
 
 #login_input_box {
     float: right;
     width: 30%;
     height: 100%;
-    background-color: gray;
+    background-color: #204A52;
     margin-left: 60%;
 }
 
 .input_login {
+    border: none;
     width: 25%;
     height: 40%;
     font: 20px "",Arial;
-    margin-left: 5%;
+    margin-left: 10px;
     margin-top: 5%;
     padding: 5px;
 }
 
 #login_button {
+    border-style: solid;
+    border-color: #E6E7E8;
     width: 25%;
     height: 40%;
-    margin-left: 20px;
-    font: 20px "", Arial;
-    border: none;
+    margin-left: 10px;
+    font: bold 16px "", Arial;
+    background-color: #204A52;
+    color: #E6E7E8;
 }
 
 #user_name {
@@ -45,5 +49,5 @@
 .hide_buttons {
     margin-left: 10px;
     font: 13px "",Arial;
-    color: azure
+    color: #E6E7E8
 }
