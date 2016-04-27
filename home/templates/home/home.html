@@ -8,27 +8,35 @@
         <link rel="stylesheet" type="text/css" href="../../static/css/home.css" >
         <script type="text/javascript" src="../../static/js/home.js"></script>
     </head>
-    <body>
-        <div id="header_box">
-            <div id="login_input_box">
-                {% if active == False %}
-                    <form method="post">
-                        {% csrf_token %}
-                            <input name="username" class="input_login" type="text" placeholder="username"/>
-                            <input name="password" class="input_login" type="password" placeholder="pasword"/>
-                            <input id="login_button" type="submit" value="Login" onmouseover="login_over(true);" onmouseout="login_over(false);" />
-                            <a class="hide_buttons" href="/accounts/register">Register</a>
-                    </form>
-                {% else %}
-                    <label id="user_name">{{usuario.name}}</label>
-                    <img src="/media_profiles/{{usuario.profile_image}}" id="profile_image" />
-                    <a class="hide_buttons" href="/accounts/logout">Logout</a>
-                    <a class="hide_buttons" href="/accounts/edit_profile">Edit Profile</a>
-                {% endif %}
+    <body style="width:100%; height:90%">
+        <div style="width: 100%; height: 100%;">
+            <div id="header_box">
+                <div id="login_input_box">
+                    {% if active == False %}
+                        <form method="post">
+                            {% csrf_token %}
+                                <input name="username" class="input_login" type="text" placeholder="username"/>
+                                <input name="password" class="input_login" type="password" placeholder="pasword"/>
+                                <input id="login_button" type="submit" value="Login" onmouseover="login_over(true);" onmouseout="login_over(false);" />
+                                <a class="hide_buttons" href="/accounts/register">Register</a>
+                        </form>
+                    {% else %}
+                        <label id="user_name">{{usuario.name}}</label>
+                        <img src="/media_profiles/{{usuario.profile_image}}" id="profile_image" />
+                        <a class="hide_buttons" href="/accounts/logout">Logout</a>
+                        <a class="hide_buttons" href="/accounts/edit_profile">Edit Profile</a>
+                    {% endif %}
+                </div>
             </div>
-        </div>
-        <div>
-            <p>conteudo do site</p>
+            <div id="home_box">
+                <div id="box_center">
+                    <p style="font-size:30px; color: #204A52; margin-left: 30px;">Este é projeto com sistema de contas</p>
+                    <p align=justify style="font-size:20px; color: #204A52; margin-left: 50px; margin-right: 50px;">Conta com sistema de login, logout, autenticação, registro de novas contas, editor de profile, contanto com uma imagem para a profile do usuario.</p>
+                </div>
+                
+                <img id="background" src="/media_profiles/default_files/home_background.jpg"/>
+                
+            </div>
         </div>
     </body>
 
