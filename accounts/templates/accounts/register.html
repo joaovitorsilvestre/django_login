@@ -1,16 +1,6 @@
 <form method="post" action=".?next={{ redirect_to }}"> {% csrf_token %}
 
-    <input type="text" name="username" placeholder="Username" style="text-transform: lowercase;"  pattern=".{3,}" required title="3 characters minimum"/>
-
-    <input type="password" name="password" placeholder="Password" pattern=".{6,}" required title="pick a password with 6 or more characters "/>
-
-    <input type="text" name="email" placeholder="Email"/>
-
-    <input type="text" name="name" placeholder="Name" pattern=".{3,}" required title="3 characters minimum"/>
-
-    {% if fail == True %}
-      <p>This username is allready beeing used...</p>
-    {% endif %}
+    {{form.as_p}}
 
     <input type="submit" value="Register"/>
 </form>
