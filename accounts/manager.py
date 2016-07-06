@@ -30,14 +30,19 @@ class AccountsManager(object):
         logout(self.request)
 
     def do_registration(self, username, password, email):
-        activation_key = get_random_string(length=20)
-        new_user = Usuario.objects.create_user(username=username,
-                                                email=email,
-                                                password=password,
-                                                is_active=False,
-                                                activation_key=activation_key)
-
-        return activation_key
+        if not Usuario.objects.filter(username=username):
+            if not Usuario.objects.filter(email=email):
+                activation_key = get_random_string(length=20)
+                new_user = Usuario.objects.create_user(username=username,
+                                                        email=email,
+                                                        password=password,
+                                                        is_active=False,
+                                                        activation_key=activation_key)
+                return activation_key
+            else:
+                raise ManagerErrors('Email ja cadastrado')
+        else:
+            raise ManagerErrors('Este username já está sendo usado')
 
     def do_activation(self, key):
         try:

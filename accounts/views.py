@@ -23,7 +23,8 @@ def Login(request):
         else:
             return HttpResponseRedirect('/home')
 
-    return render(request, 'accounts/login.html', {'form': form})
+    if request.method == 'GET':
+        return render(request, 'accounts/login.html', {'form': form})
 
 def Logout(request):
     manager = AccountsManager(request=request)
@@ -37,10 +38,13 @@ def Register(request):
         password = form.cleaned_data.get('password')
         email = form.cleaned_data.get('email')
 
-        manager = AccountsManager(request)
-        key = manager.do_registration(username=username, password=password, email=email)
-
-        return HttpResponse("conta criada com sucesso, key: {0} click <a href='/accounts/activate/{0}'>aqui</a> para ativar a conta".format(key))
+        try:
+            manager = AccountsManager(request)
+            key = manager.do_registration(username=username, password=password, email=email)
+        except Exception as erro:
+            return render(request, 'accounts/register.html', {"erro":erro})
+        else:
+            return HttpResponse("conta criada com sucesso, key: {0} click <a href='/accounts/activate/{0}'>aqui</a> para ativar a conta".format(key))
 
     return render(request, 'accounts/register.html', {'form':form})
 
